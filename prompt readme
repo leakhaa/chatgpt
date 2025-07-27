@@ -1,0 +1,91 @@
+
+
+ 🗓️ July 25th – Thursday
+
+ ✅ Prompt:
+
+> There is a change in the system . In all scenerio after the mail sent to sap there should be return mail regarding the issue eg if po is missing, the mail sent to sap to trigger it after that a return mail will be sent to us saying it is triggered . The ai should read the mail and sent the mail to User
+>
+> Now enhance the whole concept in the single prompt
+
+ ✅ Prompt:
+
+> Create a flowchart for this
+
+---
+
+ 🗓️ July 27th – Saturday
+
+ ✅ Prompt:
+
+> from scripts.email\_handler import send\_email, wait\_for\_excel\_from\_sap
+> from scripts.db import (
+> check\_asn\_exists, check\_po\_exists, check\_pallet\_exists,
+> get\_po\_vs\_asn\_qty\_summary
+> )
+> from scripts.utils import (
+> parse\_excel\_to\_df, insert\_pallets\_from\_excel,
+> fetch\_rows, generate\_html\_snippet
+> )
+>
+> def resolve\_issue(scenario, params, user\_email):
+> print(f"Resolving scenario: {scenario}")
+> ...
+>
+> in this add code for it should include the after is send mail to the sap , read the sap mail and should know if it is triggered. If yes , send mail to user saying that the it is triggered.else say it is not triggered . write this for all four scenerio . for the mismatch quantity it should read the reply mail that contain excel mail to proceed futher according to the scenerio
+
+---
+
+ 🗓️ July 27th – Later
+
+ ✅ Prompt:
+
+> \[
+> "resource": "/d:/genai/chatgpt/scripts/email\_handler.py",
+> "owner": "pylance",
+> "code": { "value": "reportMissingImports" },
+> "severity": 4,
+> "message": "Import ".mail\_reader" could not be resolved",
+> ...
+> ]
+
+---
+
+ 🗓️ July 27th – Later
+
+ ✅ Prompt:
+
+> there is already get\_unread\_emails
+
+---
+
+ 🗓️ July 27th – Later
+
+ ✅ Prompt:
+
+> File "d:\genai\chatgpt\main.py", line 76, in <module>
+> main()
+> File "d:\genai\chatgpt\main.py", line 71, in main
+> resolve\_issue(scenario, params, user\_email=sender)
+> File "d:\genai\chatgpt\scripts\resolver.py", line 26, in resolve\_issue
+> status = wait\_for\_trigger\_confirmation\_from\_sap(asn)
+> NameError: name 'wait\_for\_trigger\_confirmation\_from\_sap' is not defined
+
+---
+
+ 🗓️ July 27th – Later
+
+ ✅ Prompt:
+
+> File "d:\genai\chatgpt\main.py", line 76, in <module>
+> main()
+> File "d:\genai\chatgpt\main.py", line 71, in main
+> resolve\_issue(scenario, params, user\_email=sender)
+> File "d:\genai\chatgpt\scripts\resolver.py", line 32, in resolve\_issue
+> status = wait\_for\_trigger\_confirmation\_from\_sap(asn)
+> File "d:\genai\chatgpt\scripts\email\_handler.py", line 101, in wait\_for\_trigger\_confirmation\_from\_sap
+> from email\_handler import get\_unread\_emails   assumed method to read emails
+> ModuleNotFoundError: No module named 'email\_handler'
+
+---
+
