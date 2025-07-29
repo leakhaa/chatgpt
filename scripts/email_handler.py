@@ -11,7 +11,7 @@ import pandas as pd
 IMAP_SERVER = 'imap.gmail.com'
 SMTP_SERVER = 'smtp.gmail.com'
 EMAIL = 'leakhaa.warehouse.bot123@gmail.com'
-PASSWORD = 'owpc kbzs lskr cfte'  # Gmail app password
+PASSWORD =   # Gmail app password
 WAREHOUSE_TEAM_EMAIL = 'leakhaganesh@gmail.com'  # Replace with your target email address
 
 # ---------- READ UNREAD EMAILS AND RETURN LIST ----------
