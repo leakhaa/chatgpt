@@ -1,21 +1,25 @@
 import imaplib
 import email
 from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import io
 import smtplib
 import time
-
 import pandas as pd
+import time
+from datetime import datetime, timedelta
+import smtplib
+
 
 # ---------- CONFIGURATION ----------
 IMAP_SERVER = 'imap.gmail.com'
 SMTP_SERVER = 'smtp.gmail.com'
 EMAIL = 'leakhaa.warehouse.bot123@gmail.com'
-PASSWORD =   # Gmail app password
+PASSWORD = 'owpc kbzs lskr cfte'  # Gmail app password
 WAREHOUSE_TEAM_EMAIL = 'leakhaganesh@gmail.com'  # Replace with your target email address
 
 # ---------- READ UNREAD EMAILS AND RETURN LIST ----------
-def get_unread_emails():
+def get_unread_emails(from_filter=None):
     mail = imaplib.IMAP4_SSL(IMAP_SERVER)
     mail.login(EMAIL, PASSWORD)
     mail.select('inbox')
@@ -48,7 +52,7 @@ def get_unread_emails():
 
         # Log for debug
         print(f"Subject: {subject}")
-        print(f"Body Preview: {body[:100]}")
+        print("Body Preview:", body[:100].encode('ascii', errors='replace').decode('ascii'))
 
         # Send confirmation
         confirmation = f"Mail with subject '{subject}' has been read successfully."
@@ -92,14 +96,39 @@ def wait_for_excel_from_sap(subject_keyword="SAP Reply", timeout=180, check_inte
     print("No reply received from SAP in given time.")
     return None
 
+def wait_for_trigger_confirmation_from_sap(keyword: str, timeout_minutes: int = 10):
+    """
+    Waits for an email from SAP confirming action (Triggered/Not Triggered).
+    Returns either 'triggered', 'not_triggered', or None if timeout.
+    """
+ 
+
+    deadline = datetime.now() + timedelta(minutes=timeout_minutes)
+
+    while datetime.now() < deadline:
+        emails = get_unread_emails(from_filter="warehouse.sap.123@gmail.com")
+        for subject, body,sender in emails:
+            if keyword.lower() in body.lower():
+                if "triggered" in body.lower():
+                    return "triggered"
+                elif "not triggered" in body.lower():
+                    return "not_triggered"
+        time.sleep(30)
+    return None
 
 # ---------- SEND EMAIL ----------
-def send_email(to, subject, body):
-    msg = MIMEText(body)
+def send_email(to, subject, body, html_format=False):
+    msg = MIMEMultipart()  # ✅ Correctly create a multipart email
     msg['From'] = EMAIL
     msg['To'] = to
     msg['Subject'] = subject
 
+    if html_format:
+        msg.attach(MIMEText(body, 'html'))
+    else:
+        msg.attach(MIMEText(body, 'plain'))
+
+    # ✅ Send the email using SMTP
     with smtplib.SMTP_SSL(SMTP_SERVER, 465) as server:
         server.login(EMAIL, PASSWORD)
         server.send_message(msg)
