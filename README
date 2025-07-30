@@ -1,11 +1,9 @@
 SUPPORT - PO/ASN ISSUE
 USE CASE:
 🎯 Objective
-To build an AI-powered automated system that handles the following real-world WMS issues:
-1.Missing ASN
-2.Missing PO
-3.Missing Pallet
-4.Quantity Mismatch
+To build an intelligent, AI-assisted receiving issue resolution workflow within the warehouse application that helps identify missing or mismatched inbound records (e.g., PO, ASN, pallet ID),
+automatically interacts with UPSTREAM systems (e.g., SAP), and updates end users with real-time resolution—enhancing operational efficiency 
+and reducing manual investigation workload for warehouse and IT teams.
 
 💡 DATABASE STRUCTURE:
 
