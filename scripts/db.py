@@ -8,11 +8,17 @@ def connect_db():
 def check_asn_exists(asn_id):
     with connect_db() as conn:
         cur = conn.cursor()
+
         cur.execute("SELECT 1 FROM asn_header WHERE asn_id = ?", (asn_id,))
         header_exists = cur.fetchone()
+        print(f"[DEBUG] asn_header check for {asn_id}: {header_exists}")
+
         cur.execute("SELECT 1 FROM asn_line WHERE asn_id = ?", (asn_id,))
         line_exists = cur.fetchone()
+        print(f"[DEBUG] asn_line check for {asn_id}: {line_exists}")
+
     return bool(header_exists and line_exists)
+
 
 def check_po_exists(po_id):
     with connect_db() as conn:
