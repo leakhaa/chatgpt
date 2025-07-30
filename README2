@@ -1,0 +1,10 @@
+| 🔢 **Process Area**       | 🏛️ **Current World (Classical WMS)**                           | 🤖 **Future World (Agentic WMS)**                                                         |
+| ------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| 1. Identify issue type    | IT manually reads message and interprets intent                 | AI model classifies the issue type (e.g., missing PO, ASN, mismatch) automatically        |
+| 2. Extract key details    | Human parses PO/ASN/pallet ID from email                        | LLM extracts and validates PO, ASN, pallet IDs, and quantities from the message           |
+| 3. Check existing records | IT manually queries WMS/DB/upstream system to verify status     | AI agent checks internal DBs/WMS for record presence and status                           |
+| 4. Decision to act        | IT decides if action is needed (reset, trigger, escalate)       | AI decides if creation or correction is required based on data lookup                     |
+| 5. Trigger action         | IT manually triggers upstream system or raises internal ticket  | AI sends upstream system/API call to create/link PO/ASN/pallet or auto-escalate           |
+| 6. Monitor response       | IT waits for upstream system/mail response and monitors mailbox | AI auto-monitors mailbox for upstream system responses and matches it to original request |
+| 7. User update            | IT replies manually with resolution status                      | AI sends structured resolution summary to user (email/chat)                               |
+| 8. Audit trail            | Partial/manual tracking in emails                               | AI maintains complete, timestamped audit trail of actions taken                           |
