@@ -19,8 +19,10 @@ def fetch_rows(table, where_clause="", params=()):
     query = f"SELECT * FROM {table} {where_clause}"
     cursor.execute(query, params)
     rows = cursor.fetchall()
+    columns = [col[0] for col in cursor.description]  # extract column names
     conn.close()
-    return rows
+    return pd.DataFrame(rows, columns=columns)
+
 
 # ----------------------------
 # Record existence check
