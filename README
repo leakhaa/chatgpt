@@ -124,6 +124,12 @@ I want to develop a automated system using genai for automating a task in wareho
 👉🏻 GENERATED CODE FOR SENDING MAILS TO USER AN SAP
 👉🏻 GENERATED CODE FOR CHECKING THE PARAMETER IN THE DB
 👉🏻 LINK TO MAIN FILE -> https://github.com/leakhaa/chatgpt/blob/main/main.py
-                                      
+
+28TH JULY:
+👉🏻 GENERATE CODE FOR CLASSIFY USING DETERMINISTIC SYSTEM
+👉🏻 IMPLEMENT CODE TO CONNECT TO DB AND CHECK THE ENTRY OF PARAMETERS
+29TH JULY
+👉🏻 IMPLEMENTED CLASSIFY SYSTEM USING LLM (MISTRAL) USING OLLAMA.
+👉🏻 IMPLEMENTED BASIC WORKING OF USE CASE
                                             
                                             
