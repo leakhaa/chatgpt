@@ -60,7 +60,7 @@ def main():
 
         # Step 2: Map to your system's scenario
         scenario = map_to_scenario(body)
-        print(f" Mapped to scenario: {scenario}")
+        print(f" Mapped to scenario: {label}")
 
         # Step 3: Extract IDs (asn, po, pallet_id) from email text
         params = extract_params(body)
@@ -68,9 +68,9 @@ def main():
 
         # Step 4: Call the resolver
         if scenario != "unknown":
-            resolve_issue(scenario, params, user_email=sender)
+            resolve_issue(label, params, user_email=sender)
         else:
             print(" Could not determine scenario. Skipping email.")
 
 if __name__ == "__main__":
-    main()
+     main()
